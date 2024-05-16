@@ -5,6 +5,7 @@ using CalenderApp.Application.Features.Etkinlikler.Commands.EtkinlikSil;
 using CalenderApp.Application.Features.Etkinlikler.Commands.EtkinliktenDavetliKullanicilariSil;
 using CalenderApp.Application.Features.Etkinlikler.Queries.EklenenEtkinlikleriGetir;
 using CalenderApp.Application.Features.Etkinlikler.Queries.EtkinligeDavetliKullanicilariGetir;
+using CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciAylikEtkinlikGetir;
 using CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciEtkinligiGetir;
 using CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciEtkinlikleriGetir;
 using MediatR;
@@ -103,6 +104,14 @@ namespace CalenderApp.API.Controllers
         public async Task<IActionResult> EklenenEtkinlikleriGetir()
         {
             var response = await _mediator.Send(new EklenenEtkinlikleriGetirRequest());
+            return Ok(response);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> KullaniciAylikEtkinlikGetir(DateTime tarih)
+        {
+            var response = await _mediator.Send(new KullaniciAylikEtkinlikGetirRequest { Tarih = tarih });
             return Ok(response);
         }
     }
