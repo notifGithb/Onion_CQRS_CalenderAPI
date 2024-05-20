@@ -19,7 +19,13 @@ namespace CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciAylikEtk
         {
             if (mevcutKullaniciId == null) throw new Exception("Mevcut Kullanici Bulunamadi.");
 
-            List<Etkinlik>? deneme = await _calenderAppDbContext.Etkinliks.Where(e => e.OlusturanKullaniciId == mevcutKullaniciId && e.BaslangicTarihi.Month == request.Tarih.Month && e.BitisTarihi.Month == request.Tarih.Month).ToListAsync(cancellationToken);
+            List<Etkinlik>? deneme = await _calenderAppDbContext.Etkinliks
+                .Where(e => e.OlusturanKullaniciId == mevcutKullaniciId &&
+                            e.BaslangicTarihi.Month == request.Tarih.Month &&
+                            e.BaslangicTarihi.Year == request.Tarih.Year &&
+                            e.BitisTarihi.Month == request.Tarih.Month &&
+                            e.BaslangicTarihi.Year == request.Tarih.Year)
+                .ToListAsync(cancellationToken);
 
             if (!deneme.Any()) throw new Exception("İstenen Ay'a Ait Kullanici Etkinliği Bulunamadı.");
 
