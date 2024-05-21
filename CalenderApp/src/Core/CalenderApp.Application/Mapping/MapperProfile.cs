@@ -2,9 +2,9 @@
 using AutoMapper;
 using CalenderApp.Application.Features.Etkinlikler.Commands.EtkinlikGuncelle;
 using CalenderApp.Application.Features.Etkinlikler.Commands.EtkinlikOlustur;
+using CalenderApp.Application.Features.Etkinlikler.Queries.Bases;
 using CalenderApp.Application.Features.Etkinlikler.Queries.EklenenEtkinlikleriGetir;
 using CalenderApp.Application.Features.Etkinlikler.Queries.EtkinligeDavetliKullanicilariGetir;
-using CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciEtkinligiGetir;
 using CalenderApp.Application.Features.Kullanicilar.Queries.MevcutKullaniciGetir;
 using CalenderApp.Application.Features.Kullanicilar.Queries.TumKullanicilariGetir;
 using CalenderApp.Application.Features.OturumYonetimi.Commands.KayitOl;

@@ -8,6 +8,8 @@ using CalenderApp.Application.Features.Etkinlikler.Queries.EtkinligeDavetliKulla
 using CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciAylikEtkinlikGetir;
 using CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciEtkinligiGetir;
 using CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciEtkinlikleriGetir;
+using CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciGunlukEtkinlikGetir;
+using CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciHaftalıkEtkinlikGetir;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +24,7 @@ namespace CalenderApp.API.Controllers
         {
             _mediator = mediator;
         }
+
 
         [HttpPost]
         public async Task<IActionResult> EtkinlikOlustur([FromBody] EtkinlikOlusturRequest request)
@@ -44,6 +47,7 @@ namespace CalenderApp.API.Controllers
             return Ok();
         }
 
+
         [HttpDelete]
         public async Task<IActionResult> EtkinlikSil([FromQuery] EtkinlikSilRequest request)
         {
@@ -53,6 +57,7 @@ namespace CalenderApp.API.Controllers
             await _mediator.Send(request);
             return Ok();
         }
+
 
         [HttpPost]
         public async Task<IActionResult> EtkinligeKullaniciEkle([FromBody] EtkinligeKullaniciEkleRequest request)
@@ -112,6 +117,22 @@ namespace CalenderApp.API.Controllers
         public async Task<IActionResult> KullaniciAylikEtkinlikGetir(DateTime tarih)
         {
             var response = await _mediator.Send(new KullaniciAylikEtkinlikGetirRequest { Tarih = tarih });
+            return Ok(response);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> KullaniciHaftalıkEtkinlikGetir(DateTime tarih)
+        {
+            var response = await _mediator.Send(new KullaniciHaftalikEtkinlikGetirRequest { Tarih = tarih });
+            return Ok(response);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> KullaniciGunlukEtkinlikGetir(DateTime tarih)
+        {
+            var response = await _mediator.Send(new KullaniciGunlukEtkinlikGetirRequest { Tarih = tarih });
             return Ok(response);
         }
     }

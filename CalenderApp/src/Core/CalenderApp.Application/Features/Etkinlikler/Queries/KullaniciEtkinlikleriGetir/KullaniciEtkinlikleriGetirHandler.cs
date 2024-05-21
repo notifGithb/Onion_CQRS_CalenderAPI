@@ -1,7 +1,7 @@
 ﻿using ActivityCalender.Entities;
 using AutoMapper;
 using CalenderApp.Application.Bases;
-using CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciEtkinligiGetir;
+using CalenderApp.Application.Features.Etkinlikler.Queries.Bases;
 using CalenderApp.Persistence.Context;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -11,17 +11,23 @@ namespace CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciEtkinlik
 {
     public class KullaniciEtkinlikleriGetirHandler : BaseHandler, IRequestHandler<KullaniciEtkinlikleriGetirRequest, IList<KullaniciEtkinligiGetirResponse>>
     {
-        public KullaniciEtkinlikleriGetirHandler(IMapper mapper, IHttpContextAccessor httpContextAccessor, CalenderAppDbContext calenderAppDbContext) : base(mapper, httpContextAccessor, calenderAppDbContext)
+        public KullaniciEtkinlikleriGetirHandler(
+            IMapper mapper,
+            IHttpContextAccessor httpContextAccessor,
+            CalenderAppDbContext calenderAppDbContext) : base(mapper, httpContextAccessor, calenderAppDbContext)
         {
         }
 
         public async Task<IList<KullaniciEtkinligiGetirResponse>> Handle(KullaniciEtkinlikleriGetirRequest request, CancellationToken cancellationToken)
         {
-            if (mevcutKullaniciId == null) throw new Exception("Mevcut Kullanici Bulunamadi.");
+            if (mevcutKullaniciId == null) throw new Exception("Mevcut Kullanıcı Bulunamadı.");
 
-            IList<Etkinlik> kullaniciEtkinlikleri = await _calenderAppDbContext.Etkinliks.Where(e => e.OlusturanKullaniciId == mevcutKullaniciId).ToListAsync(cancellationToken);
+            IList<Etkinlik> kullaniciEtkinlikleri = await _calenderAppDbContext.Etkinliks
+                .Where(e => e.OlusturanKullaniciId == mevcutKullaniciId)
+                .AsNoTracking()
+                .ToListAsync(cancellationToken);
 
-            if (!kullaniciEtkinlikleri.Any()) throw new Exception("Kullanici Etkinliği Bulunamdı.");
+            if (!kullaniciEtkinlikleri.Any()) throw new Exception("Kullanıcı Etkinliği Bulunamdı.");
 
             return _mapper.Map<IList<KullaniciEtkinligiGetirResponse>>(kullaniciEtkinlikleri);
         }

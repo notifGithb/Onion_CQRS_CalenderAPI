@@ -47,7 +47,6 @@ namespace CalenderApp.Application.Features.OturumYonetimi.Commands.KayitOl
                 await _calenderAppDbContext.Kullanicis.AddAsync(yeniKullanici, cancellationToken);
                 await _calenderAppDbContext.SaveChangesAsync(cancellationToken);
 
-                //return new KayitOlResponse();
             }
             catch (ArgumentNullException)
             {

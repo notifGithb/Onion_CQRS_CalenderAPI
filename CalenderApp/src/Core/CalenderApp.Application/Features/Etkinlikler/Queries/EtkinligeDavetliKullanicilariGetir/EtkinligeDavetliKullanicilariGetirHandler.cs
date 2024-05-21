@@ -10,7 +10,10 @@ namespace CalenderApp.Application.Features.Etkinlikler.Queries.EtkinligeDavetliK
 {
     public class EtkinligeDavetliKullanicilariGetirHandler : BaseHandler, IRequestHandler<EtkinligeDavetliKullanicilariGetirRequest, IList<EtkinligeDavetliKullanicilariGetirResponse>>
     {
-        public EtkinligeDavetliKullanicilariGetirHandler(IMapper mapper, IHttpContextAccessor httpContextAccessor, CalenderAppDbContext calenderAppDbContext) : base(mapper, httpContextAccessor, calenderAppDbContext)
+        public EtkinligeDavetliKullanicilariGetirHandler(
+            IMapper mapper, 
+            IHttpContextAccessor httpContextAccessor, 
+            CalenderAppDbContext calenderAppDbContext) : base(mapper, httpContextAccessor, calenderAppDbContext)
         {
         }
 
@@ -24,9 +27,7 @@ namespace CalenderApp.Application.Features.Etkinlikler.Queries.EtkinligeDavetliK
                 .AsNoTracking()
                 .ToListAsync(cancellationToken);
 
-
             return _mapper.Map<IList<EtkinligeDavetliKullanicilariGetirResponse>>(kullanicilar);
-
         }
     }
 }

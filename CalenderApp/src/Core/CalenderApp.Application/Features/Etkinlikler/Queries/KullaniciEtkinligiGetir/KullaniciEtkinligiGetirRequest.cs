@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using CalenderApp.Application.Features.Etkinlikler.Queries.Bases;
+using MediatR;
 
 namespace CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciEtkinligiGetir
 {

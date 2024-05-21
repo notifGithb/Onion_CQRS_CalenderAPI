@@ -10,7 +10,10 @@ namespace CalenderApp.Application.Features.Etkinlikler.Commands.EtkinligeKullani
 {
     public class EtkinligeKullaniciEkleHandler : BaseHandler, IRequestHandler<EtkinligeKullaniciEkleRequest>
     {
-        public EtkinligeKullaniciEkleHandler(IMapper mapper, IHttpContextAccessor httpContextAccessor, CalenderAppDbContext calenderAppDbContext) : base(mapper, httpContextAccessor, calenderAppDbContext)
+        public EtkinligeKullaniciEkleHandler(
+            IMapper mapper, 
+            IHttpContextAccessor httpContextAccessor, 
+            CalenderAppDbContext calenderAppDbContext) : base(mapper, httpContextAccessor, calenderAppDbContext)
         {
         }
 

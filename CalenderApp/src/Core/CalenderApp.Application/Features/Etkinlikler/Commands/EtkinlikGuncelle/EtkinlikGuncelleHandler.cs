@@ -10,7 +10,10 @@ namespace CalenderApp.Application.Features.Etkinlikler.Commands.EtkinlikGuncelle
 {
     internal class EtkinlikGuncelleHandler : BaseHandler, IRequestHandler<EtkinlikGuncelleRequest>
     {
-        public EtkinlikGuncelleHandler(IMapper mapper, IHttpContextAccessor httpContextAccessor, CalenderAppDbContext calenderAppDbContext) : base(mapper, httpContextAccessor, calenderAppDbContext)
+        public EtkinlikGuncelleHandler(
+            IMapper mapper, 
+            IHttpContextAccessor httpContextAccessor, 
+            CalenderAppDbContext calenderAppDbContext) : base(mapper, httpContextAccessor, calenderAppDbContext)
         {
         }
 

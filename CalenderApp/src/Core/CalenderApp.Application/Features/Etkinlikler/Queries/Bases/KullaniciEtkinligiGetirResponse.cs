@@ -1,6 +1,6 @@
 ﻿using ActivityCalender.Entities;
 
-namespace CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciEtkinligiGetir
+namespace CalenderApp.Application.Features.Etkinlikler.Queries.Bases
 {
     public class KullaniciEtkinligiGetirResponse
     {

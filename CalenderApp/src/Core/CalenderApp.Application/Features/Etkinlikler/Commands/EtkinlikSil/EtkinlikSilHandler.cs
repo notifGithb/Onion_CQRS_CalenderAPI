@@ -10,7 +10,10 @@ namespace CalenderApp.Application.Features.Etkinlikler.Commands.EtkinlikSil
 {
     public class EtkinlikSilHandler : BaseHandler, IRequestHandler<EtkinlikSilRequest>
     {
-        public EtkinlikSilHandler(IMapper mapper, IHttpContextAccessor httpContextAccessor, CalenderAppDbContext calenderAppDbContext) : base(mapper, httpContextAccessor, calenderAppDbContext)
+        public EtkinlikSilHandler(
+            IMapper mapper, 
+            IHttpContextAccessor httpContextAccessor, 
+            CalenderAppDbContext calenderAppDbContext) : base(mapper, httpContextAccessor, calenderAppDbContext)
         {
         }
 
@@ -22,7 +25,6 @@ namespace CalenderApp.Application.Features.Etkinlikler.Commands.EtkinlikSil
 
             _calenderAppDbContext.Etkinliks.Remove(etkinlikSil);
             await _calenderAppDbContext.SaveChangesAsync(cancellationToken);
-
         }
     }
 }

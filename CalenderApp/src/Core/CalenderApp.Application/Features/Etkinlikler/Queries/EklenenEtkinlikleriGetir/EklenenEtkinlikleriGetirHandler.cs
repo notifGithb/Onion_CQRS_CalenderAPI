@@ -10,13 +10,16 @@ namespace CalenderApp.Application.Features.Etkinlikler.Queries.EklenenEtkinlikle
 {
     public class EklenenEtkinlikleriGetirHandler : BaseHandler, IRequestHandler<EklenenEtkinlikleriGetirRequest, IList<EklenenEtkinlikleriGetirResponse>>
     {
-        public EklenenEtkinlikleriGetirHandler(IMapper mapper, IHttpContextAccessor httpContextAccessor, CalenderAppDbContext calenderAppDbContext) : base(mapper, httpContextAccessor, calenderAppDbContext)
+        public EklenenEtkinlikleriGetirHandler(
+            IMapper mapper, 
+            IHttpContextAccessor httpContextAccessor, 
+            CalenderAppDbContext calenderAppDbContext) : base(mapper, httpContextAccessor, calenderAppDbContext)
         {
         }
 
         public async Task<IList<EklenenEtkinlikleriGetirResponse>> Handle(EklenenEtkinlikleriGetirRequest request, CancellationToken cancellationToken)
         {
-            if (mevcutKullaniciId == null) throw new Exception("Mevcut Kullanici Bulunamadi.");
+            if (mevcutKullaniciId == null) throw new Exception("Mevcut Kullanıcı Bulunamadı.");
 
 
             IList<Etkinlik> eklenenEtkinlikler = await _calenderAppDbContext.KullaniciEtkinliks

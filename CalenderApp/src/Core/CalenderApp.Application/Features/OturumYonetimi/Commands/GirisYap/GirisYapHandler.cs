@@ -34,7 +34,6 @@ namespace CalenderApp.Application.Features.OturumYonetimi.Commands.GirisYap
                 request.KullaniciSifresi = hashedSifre;
                 request.KullaniciAdi = request.KullaniciAdi.Trim().ToLower();
 
-
                 Kullanici? kullanici = await _calenderAppDbContext.Kullanicis.Where(k => k.KullaniciAdi == request.KullaniciAdi && k.KullaniciSifresi == request.KullaniciSifresi).FirstOrDefaultAsync(cancellationToken);
                 if (kullanici == null)
                 {

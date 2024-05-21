@@ -26,7 +26,6 @@ namespace CalenderApp.Application.Features.Etkinlikler.Commands.EtkinlikOlustur
 
             if (request.BitisTarihi < request.BaslangicTarihi) throw new Exception("Tarih Doğrulanamdı.");
 
-
             var exist = await _calenderAppDbContext.Etkinliks
                 .Where(e => e.OlusturanKullaniciId == mevcutKullaniciId)
                 .AnyAsync(e =>
@@ -34,7 +33,6 @@ namespace CalenderApp.Application.Features.Etkinlikler.Commands.EtkinlikOlustur
                 (e.BaslangicTarihi <= request.BaslangicTarihi && (e.BitisTarihi < request.BitisTarihi || request.BitisTarihi <= e.BitisTarihi) && request.BaslangicTarihi <= e.BitisTarihi), cancellationToken);
 
             if (exist) throw new Exception("Girilen Tarih Araliginda Etkinlik Kaydi Bulunmaktadir.");
-            //bool gecerli = exist.Any(e => (e.BaslangicTarihi >= request.BaslangicTarihi && (e.BitisTarihi <= request.BitisTarihi || request.BitisTarihi < e.BitisTarihi) && e.BaslangicTarihi <= request.BitisTarihi) || (e.BaslangicTarihi <= request.BaslangicTarihi && (e.BitisTarihi < request.BitisTarihi || request.BitisTarihi <= e.BitisTarihi) && request.BaslangicTarihi <= e.BitisTarihi));
 
             await _calenderAppDbContext.Etkinliks.AddAsync(etkinlikOlustur, cancellationToken);
             await _calenderAppDbContext.SaveChangesAsync(cancellationToken);
