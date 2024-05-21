@@ -27,9 +27,9 @@ namespace CalenderApp.API.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> GirisYap([FromBody] GirisYapRequest request)
+        public async Task<IActionResult> GirisYap([FromBody] GirisYapRequest request, CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(request);
+            var response = await _mediator.Send(request, cancellationToken);
             return Ok(response);
 
         }

@@ -19,9 +19,9 @@ namespace CalenderApp.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> MevcutKullaniciGetir()
+        public async Task<IActionResult> MevcutKullaniciGetir(CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(new MevcutKullaniciGetirRequest());
+            var response = await _mediator.Send(new MevcutKullaniciGetirRequest(), cancellationToken);
 
             return Ok(response);
         }
@@ -29,9 +29,9 @@ namespace CalenderApp.API.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> TumKullanicilariGetir()
+        public async Task<IActionResult> TumKullanicilariGetir(CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(new TumKullanicilariGetirRequest());
+            var response = await _mediator.Send(new TumKullanicilariGetirRequest(), cancellationToken);
 
             return Ok(response);
         }

@@ -12,6 +12,7 @@ using CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciGunlukEtkinl
 using CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciHaftalıkEtkinlikGetir;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading;
 
 namespace CalenderApp.API.Controllers
 {
@@ -27,112 +28,112 @@ namespace CalenderApp.API.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> EtkinlikOlustur([FromBody] EtkinlikOlusturRequest request)
+        public async Task<IActionResult> EtkinlikOlustur([FromBody] EtkinlikOlusturRequest request, CancellationToken cancellationToken)
         {
             if (request == null)
                 return BadRequest();
 
-            await _mediator.Send(request);
+            await _mediator.Send(request, cancellationToken);
             return Ok();
         }
 
 
         [HttpPut]
-        public async Task<IActionResult> EtkinlikGuncelle([FromBody] EtkinlikGuncelleRequest request)
+        public async Task<IActionResult> EtkinlikGuncelle([FromBody] EtkinlikGuncelleRequest request, CancellationToken cancellationToken)
         {
             if (request == null)
                 return BadRequest();
 
-            await _mediator.Send(request);
+            await _mediator.Send(request, cancellationToken);
             return Ok();
         }
 
 
         [HttpDelete]
-        public async Task<IActionResult> EtkinlikSil([FromQuery] EtkinlikSilRequest request)
+        public async Task<IActionResult> EtkinlikSil([FromQuery] EtkinlikSilRequest request, CancellationToken cancellationToken)
         {
             if (request == null)
                 return BadRequest();
 
-            await _mediator.Send(request);
+            await _mediator.Send(request, cancellationToken);
             return Ok();
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> EtkinligeKullaniciEkle([FromBody] EtkinligeKullaniciEkleRequest request)
+        public async Task<IActionResult> EtkinligeKullaniciEkle([FromBody] EtkinligeKullaniciEkleRequest request, CancellationToken cancellationToken)
         {
             if (request == null)
                 return BadRequest();
 
-            await _mediator.Send(request);
+            await _mediator.Send(request, cancellationToken);
             return Ok();
         }
 
 
         [HttpDelete]
-        public async Task<IActionResult> EtkinliktenDavetliKullanicilariSil([FromBody] EtkinliktenDavetliKullanicilariSilRequest request)
+        public async Task<IActionResult> EtkinliktenDavetliKullanicilariSil([FromBody] EtkinliktenDavetliKullanicilariSilRequest request, CancellationToken cancellationToken)
         {
             if (request == null)
                 return BadRequest();
 
-            await _mediator.Send(request);
+            await _mediator.Send(request, cancellationToken);
             return Ok();
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> EtkinligeDavetliKullanicilariGetir([FromQuery] int etkinlikId)
+        public async Task<IActionResult> EtkinligeDavetliKullanicilariGetir([FromQuery] int etkinlikId, CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(new EtkinligeDavetliKullanicilariGetirRequest { EtkinlikId = etkinlikId });
+            var response = await _mediator.Send(new EtkinligeDavetliKullanicilariGetirRequest { EtkinlikId = etkinlikId }, cancellationToken);
             return Ok(response);
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> KullaniciEtkinligiGetir([FromQuery] int etkinlikId)
+        public async Task<IActionResult> KullaniciEtkinligiGetir([FromQuery] int etkinlikId, CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(new KullaniciEtkinligiGetirRequest { EtkinlikId = etkinlikId });
+            var response = await _mediator.Send(new KullaniciEtkinligiGetirRequest { EtkinlikId = etkinlikId }, cancellationToken);
             return Ok(response);
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> KullaniciEtkinlikleriGetir()
+        public async Task<IActionResult> KullaniciEtkinlikleriGetir(CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(new KullaniciEtkinlikleriGetirRequest());
+            var response = await _mediator.Send(new KullaniciEtkinlikleriGetirRequest(), cancellationToken);
             return Ok(response);
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> EklenenEtkinlikleriGetir()
+        public async Task<IActionResult> EklenenEtkinlikleriGetir(CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(new EklenenEtkinlikleriGetirRequest());
+            var response = await _mediator.Send(new EklenenEtkinlikleriGetirRequest(), cancellationToken);
             return Ok(response);
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> KullaniciAylikEtkinlikGetir(DateTime tarih)
+        public async Task<IActionResult> KullaniciAylikEtkinlikGetir(DateTime tarih, CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(new KullaniciAylikEtkinlikGetirRequest { Tarih = tarih });
+            var response = await _mediator.Send(new KullaniciAylikEtkinlikGetirRequest { Tarih = tarih }, cancellationToken);
             return Ok(response);
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> KullaniciHaftalıkEtkinlikGetir(DateTime tarih)
+        public async Task<IActionResult> KullaniciHaftalıkEtkinlikGetir(DateTime tarih, CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(new KullaniciHaftalikEtkinlikGetirRequest { Tarih = tarih });
+            var response = await _mediator.Send(new KullaniciHaftalikEtkinlikGetirRequest { Tarih = tarih }, cancellationToken);
             return Ok(response);
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> KullaniciGunlukEtkinlikGetir(DateTime tarih)
+        public async Task<IActionResult> KullaniciGunlukEtkinlikGetir(DateTime tarih, CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(new KullaniciGunlukEtkinlikGetirRequest { Tarih = tarih });
+            var response = await _mediator.Send(new KullaniciGunlukEtkinlikGetirRequest { Tarih = tarih }, cancellationToken);
             return Ok(response);
         }
     }
