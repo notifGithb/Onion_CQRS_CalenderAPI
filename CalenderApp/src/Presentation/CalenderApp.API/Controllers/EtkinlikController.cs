@@ -12,7 +12,6 @@ using CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciGunlukEtkinl
 using CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciHaftalıkEtkinlikGetir;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading;
 
 namespace CalenderApp.API.Controllers
 {
