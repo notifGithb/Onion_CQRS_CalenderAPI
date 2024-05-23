@@ -1,4 +1,4 @@
-﻿namespace ActivityCalender.Entities
+﻿namespace CalenderApp.Domain.Entities
 {
     public sealed class KullaniciEtkinlik
     {

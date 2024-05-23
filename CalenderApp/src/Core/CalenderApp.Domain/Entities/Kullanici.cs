@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ActivityCalender.Entities
+namespace CalenderApp.Domain.Entities
 {
     public sealed class Kullanici
     {

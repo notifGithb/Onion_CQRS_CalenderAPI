@@ -1,4 +1,4 @@
-﻿using ActivityCalender.Entities;
+﻿using CalenderApp.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 

@@ -1,4 +1,4 @@
-﻿using ActivityCalender.Entities;
+﻿using CalenderApp.Domain.Enums;
 
 namespace CalenderApp.Application.Features.Etkinlikler.Queries.Bases
 {

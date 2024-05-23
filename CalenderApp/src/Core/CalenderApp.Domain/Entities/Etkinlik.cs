@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CalenderApp.Domain.Enums;
+using System.ComponentModel.DataAnnotations;
 
-namespace ActivityCalender.Entities
+namespace CalenderApp.Domain.Entities
 {
-    public sealed class Etkinlik 
+    public sealed class Etkinlik
     {
         public Etkinlik()
         {

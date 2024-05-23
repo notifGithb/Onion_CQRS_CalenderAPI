@@ -1,4 +1,4 @@
-﻿namespace ActivityCalender.Entities
+﻿namespace CalenderApp.Domain.Enums
 {
     public enum TekrarEnum
     {

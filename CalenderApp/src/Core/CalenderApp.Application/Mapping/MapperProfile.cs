@@ -1,5 +1,4 @@
-﻿using ActivityCalender.Entities;
-using AutoMapper;
+﻿using AutoMapper;
 using CalenderApp.Application.Features.Etkinlikler.Commands.EtkinlikGuncelle;
 using CalenderApp.Application.Features.Etkinlikler.Commands.EtkinlikOlustur;
 using CalenderApp.Application.Features.Etkinlikler.Queries.Bases;
@@ -8,6 +7,7 @@ using CalenderApp.Application.Features.Etkinlikler.Queries.EtkinligeDavetliKulla
 using CalenderApp.Application.Features.Kullanicilar.Queries.MevcutKullaniciGetir;
 using CalenderApp.Application.Features.Kullanicilar.Queries.TumKullanicilariGetir;
 using CalenderApp.Application.Features.OturumYonetimi.Commands.KayitOl;
+using CalenderApp.Domain.Entities;
 
 namespace CalenderApp.Application.Mapping
 {

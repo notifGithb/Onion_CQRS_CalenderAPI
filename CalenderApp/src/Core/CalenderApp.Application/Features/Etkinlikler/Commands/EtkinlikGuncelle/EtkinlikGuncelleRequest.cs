@@ -1,4 +1,4 @@
-﻿using ActivityCalender.Entities;
+﻿using CalenderApp.Domain.Enums;
 using MediatR;
 
 namespace CalenderApp.Application.Features.Etkinlikler.Commands.EtkinlikGuncelle

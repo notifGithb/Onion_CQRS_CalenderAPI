@@ -1,4 +1,4 @@
-﻿using ActivityCalender.Entities;
+﻿using CalenderApp.Domain.Entities;
 
 namespace CalenderApp.Application.Interfaces.Tokens
 {

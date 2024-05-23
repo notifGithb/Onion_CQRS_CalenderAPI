@@ -1,6 +1,6 @@
-﻿using ActivityCalender.Entities;
-using AutoMapper;
+﻿using AutoMapper;
 using CalenderApp.Application.Bases;
+using CalenderApp.Domain.Entities;
 using CalenderApp.Persistence.Context;
 using MediatR;
 using Microsoft.AspNetCore.Http;

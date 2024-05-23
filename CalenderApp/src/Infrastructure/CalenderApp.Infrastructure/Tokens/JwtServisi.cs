@@ -1,5 +1,5 @@
-﻿using ActivityCalender.Entities;
-using CalenderApp.Application.Interfaces.Tokens;
+﻿using CalenderApp.Application.Interfaces.Tokens;
+using CalenderApp.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
