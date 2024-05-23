@@ -32,16 +32,14 @@ namespace CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciHaftalı
 
             List<Etkinlik>? etkinlikler = await _calenderAppDbContext.Etkinliks
                 .Where(e => e.OlusturanKullaniciId == mevcutKullaniciId &&
-                            e.BaslangicTarihi.Year == request.Tarih.Year &&
-                            e.BitisTarihi.Year == request.Tarih.Year)
+                            e.BaslangicTarihi.Year == request.Tarih.Year)
                 .AsNoTracking()
                 .ToListAsync(cancellationToken);
 
             if (!etkinlikler.Any()) throw new Exception("İstenen Haftaya Ait Kullanici Etkinliği Bulunamadı.");
 
             List<Etkinlik> filteredEtkinlikler = etkinlikler
-                .Where(e => calendar.GetWeekOfYear(e.BaslangicTarihi, calendarWeekRule, firstDayOfWeek) == haftaNumarasi &&
-                            calendar.GetWeekOfYear(e.BitisTarihi, calendarWeekRule, firstDayOfWeek) == haftaNumarasi)
+                .Where(e => calendar.GetWeekOfYear(e.BaslangicTarihi, calendarWeekRule, firstDayOfWeek) == haftaNumarasi)
                 .ToList();
 
             if (!filteredEtkinlikler.Any()) throw new Exception("İstenen Haftaya Ait Kullanici Etkinliği Bulunamadı.");

@@ -25,9 +25,7 @@ namespace CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciGunlukEt
             List<Etkinlik>? deneme = await _calenderAppDbContext.Etkinliks
                 .Where(e => e.OlusturanKullaniciId == mevcutKullaniciId &&
                             e.BaslangicTarihi.DayOfYear == request.Tarih.DayOfYear &&
-                            e.BaslangicTarihi.Year == request.Tarih.Year &&
-                            e.BitisTarihi.DayOfYear == request.Tarih.DayOfYear &&
-                            e.BitisTarihi.Year == request.Tarih.Year)
+                            e.BaslangicTarihi.Year == request.Tarih.Year)
                 .AsNoTracking()
                 .ToListAsync(cancellationToken);
 

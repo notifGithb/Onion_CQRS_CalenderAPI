@@ -12,8 +12,8 @@ namespace CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciAylikEtk
     public class KullaniciAylikEtkinlikGetirHandler : BaseHandler, IRequestHandler<KullaniciAylikEtkinlikGetirRequest, IList<KullaniciEtkinligiGetirResponse>>
     {
         public KullaniciAylikEtkinlikGetirHandler(
-            IMapper mapper, 
-            IHttpContextAccessor httpContextAccessor, 
+            IMapper mapper,
+            IHttpContextAccessor httpContextAccessor,
             CalenderAppDbContext calenderAppDbContext) : base(mapper, httpContextAccessor, calenderAppDbContext)
         {
         }
@@ -25,9 +25,7 @@ namespace CalenderApp.Application.Features.Etkinlikler.Queries.KullaniciAylikEtk
             List<Etkinlik>? deneme = await _calenderAppDbContext.Etkinliks
                 .Where(e => e.OlusturanKullaniciId == mevcutKullaniciId &&
                             e.BaslangicTarihi.Month == request.Tarih.Month &&
-                            e.BaslangicTarihi.Year == request.Tarih.Year &&
-                            e.BitisTarihi.Month == request.Tarih.Month &&
-                            e.BitisTarihi.Year == request.Tarih.Year)
+                            e.BaslangicTarihi.Year == request.Tarih.Year)
                 .AsNoTracking()
                 .ToListAsync(cancellationToken);
 
